@@ -1,4 +1,4 @@
-package com.learnSpring.learnSpring.domain;
+package com.learnSpring.learnSpring.Data.Entity;
 
 import jakarta.persistence.*;
 

@@ -1,7 +1,7 @@
 package com.learnSpring.learnSpring;
 
-import com.learnSpring.learnSpring.domain.Student;
-import com.learnSpring.learnSpring.repository.StudentRepository;
+import com.learnSpring.learnSpring.Data.Entity.Student;
+import com.learnSpring.learnSpring.Data.Repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +15,7 @@ class LearnSpringApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Student oStudent = new Student("Oscar", "Ochoa", 25, "9N2dW@example.com", "1234");
+		Student oStudent = new Student("Daniel", "Martinez", 20, "daniel@example.com", "1234");
 		studentRepository.save(oStudent);
 	}
 
