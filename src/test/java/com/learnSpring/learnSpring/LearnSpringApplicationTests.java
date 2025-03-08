@@ -15,7 +15,7 @@ class LearnSpringApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Student oStudent = new Student("Don gato", "Pandilla", 15, "dongato@example.com", "1234");
+		Student oStudent = new Student("Don gato", "Pandilla", 15, "dongato3@example.com", "1234");
 		studentRepository.save(oStudent);
 	}
 

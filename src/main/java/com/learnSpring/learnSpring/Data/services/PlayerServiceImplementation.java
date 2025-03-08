@@ -2,7 +2,11 @@ package com.learnSpring.learnSpring.Data.services;
 
 import com.learnSpring.learnSpring.Data.Entity.Player;
 import com.learnSpring.learnSpring.Data.Repository.PlayerRepository;
+import com.learnSpring.learnSpring.common.NotFoundElementException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,7 +51,22 @@ public class PlayerServiceImplementation implements PlayerService {
     }
 
     @Override
-    public Player deleteById(Long playerId) {
-        return null;
+    public void deleteById(Long playerId) {
+        /*
+        if (this.playerRepository.findById(playerId).isPresent()) {
+            this.playerRepository.deleteById(playerId);
+        } else {
+            throw new RuntimeException("Player not found");
+        }
+        * */
+
+        Player playeroptional = this.playerRepository.findById(playerId).orElseThrow(NotFoundElementException::new);
+        this.playerRepository.delete(playeroptional);
+    }
+
+    @Override
+    public Page<Player> findAll(int page, int pageSize) {
+        PageRequest pageRequest = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.ASC, "fullname"));
+        return this.playerRepository.findAll(pageRequest);
     }
 }
